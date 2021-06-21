@@ -26,13 +26,23 @@ function getRandomPhraseAsArray(array) {
     return result; //array containing characters, i.e. ['h', 'e', 'l', 'l', 'o']
 }
 
-getRandomPhraseAsArray(phrases)
+getRandomPhraseAsArray(phrases);
 
 function addPhraseToDisplay(array) {
-    for (let i = 0; i < phrases.length; i ++){
-        let ul = document.getElementsByTagName('ul')
-        let li = document.createElement('li')
-        list.textContent = array[i]
-        list.appendChild(ul)
+    let ul = document.querySelector('ul');
+    for (let i = 0; i < array.length; i++){
+        let li = document.createElement('li');
+        li.textContent = array[i];
+        if (array[i] !== ' ') {
+             li.className = 'letter';
+        }
+        ul.appendChild(li);
     }
+}
+
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray); 
+
+function checkLetter() {
+    
 }
