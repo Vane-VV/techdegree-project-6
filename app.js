@@ -52,7 +52,15 @@ function checkLetter(btn) {
     return result;
 }
 
-
+qwerty.addEventListener('click', (e) => {
+    const btn = e.target;
+    if (btn.tagName === 'BUTTON') {
+        btn.className = 'chosen';
+        btn.setAttribute("disabled", "true");
+        console.log('its working');
+        const letterFound = checkLetter(btn)
+    }
+});
 
 
 
