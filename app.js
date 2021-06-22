@@ -26,8 +26,6 @@ function getRandomPhraseAsArray(array) {
     return result; //array containing characters, i.e. ['h', 'e', 'l', 'l', 'o']
 }
 
-getRandomPhraseAsArray(phrases);
-
 function addPhraseToDisplay(array) {
     let ul = document.querySelector('ul');
     for (let i = 0; i < array.length; i++){
@@ -40,9 +38,26 @@ function addPhraseToDisplay(array) {
     }
 }
 
+function checkLetter(btn) {
+        let result = null;
+        const guessed = btn.textContent;
+        const phraseLetters = document.querySelectorAll('.letter');
+    for (let i = 0; i < phraseLetters.length; i++) {
+        let letter = phraseLetters[i];
+        if (guessed === letter.textContent) {
+            letter.classList.add('show');
+            result = letter;
+        }
+    }
+    return result;
+}
+
+
+
+
+
+
+
+
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray); 
-
-function checkLetter() {
-    
-}
