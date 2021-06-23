@@ -52,32 +52,30 @@ function checkLetter(btn) { //checks if button pressed is in the array
     return result;
 }
 
-function checkWin() {
-    const show = document.getElementsByClassName('show');
-    const letters = document.getElementsByClassName('letter');
-    if (show.length === letters.length) {
-        overlay.className = 'win';
-        overlay.style.display = 'flex';
-    } else if (missed >= 5) {
+function checkWin() { //new function
+    const show = document.getElementsByClassName('show'); //made variable for the class name 'show;
+    const letters = document.getElementsByClassName('letter'); //made variable  for the class name 'letter'
+    if (show.length === letters.length) { //if there are the same amount of letters as the amount selcted that are correct then
+        overlay.className = 'win'; //display the win screen
+        overlay.style.display = 'flex'; //its display its flex
+    } else if (missed >= 5) { //if you chose more than 5 wrong the display lose screen
         overlay.className = 'lose';
         overlay.style.display = 'flex';
     }
 }
 
 function loseHeart()  {
-    const scoreboard = document.querySelector('ol');
-    // save scoreboard ol in a variable
-    scoreboard.removeChild(scoreboard.lastElementChild);
-    // remove the last child from the ol
+    const scoreboard = document.querySelector('ol'); // save scoreboard ol in a variable
+    scoreboard.removeChild(scoreboard.lastElementChild); // remove the last child from the ol
 }
 
-qwerty.addEventListener('click', (e) => {
+qwerty.addEventListener('click', (e) => { //when there is a click
     const btn = e.target;
-    if (btn.tagName === 'BUTTON') {
-        btn.className = 'chosen';
-        btn.setAttribute("disabled", "true");
-        const letterFound = checkLetter(btn);
-        if (!letterFound) {
+    if (btn.tagName === 'BUTTON') { //on a button with the tag name of button
+        btn.className = 'chosen'; //give it the class chosen
+        btn.setAttribute("disabled", "true"); //dissable the button so it will count as only one try afterwards
+        const letterFound = checkLetter(btn); 
+        if (!letterFound) { //if the letter pressed is not part of the string cosen then lose a heart
             missed++;
             loseHeart();
         }
@@ -85,5 +83,5 @@ qwerty.addEventListener('click', (e) => {
     }
 });
 
-const phraseArray = getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases); //chooses a random string from the array made to display so we can guess it
 addPhraseToDisplay(phraseArray); 
